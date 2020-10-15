@@ -25,5 +25,10 @@ public class ClientController {
 		model.addAttribute("clients", clients);
 		return "/views/clients/listClients";
 	}
+	
+	@GetMapping("/create")
+	public String create() {
+		return "/views/clients/formClient";
+	}
 
 }
