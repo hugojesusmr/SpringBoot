@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="template/template :: head">
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<div th:replace="components/style"></div>
+<title>HOME</title>
+
+</head>
+<body>
+	<header th:replace="template/template :: header"></header>
+	<div class="container">
+		<h1 th:text="${titulo}"></h1>
+	</div>
+	<div class="container">
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">Id</th>
+					<th scope="col">First Name</th>
+					<th scope="col">Last Name</th>
+					<th scope="col">Phone</th>
+					<th scope="col">Email</th>
+					<th scope="col">City</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="client : ${clients}">
+					<th scope="row" th:text="${client.idClient}"></th>
+					<th scope="row" th:text="${client.firstName}"></th>
+					<th scope="row" th:text="${client.lastName}"></th>
+					<th scope="row" th:text="${client.phone}"></th>
+					<th scope="row" th:text="${client.email}"></th>
+					<th scope="row" th:text="${client.idCity.city}"></th>
+				</tr>
+			</tbody>
+		</table>
+
+	</div>
+
+	<footer th:replace="template/template :: footer"></footer>
+</body>
+
+</html>
