@@ -13,33 +13,34 @@
 	<header th:replace="template/template :: header"></header>
 	<div class="container">
 	   <div class="card bg-light">
-	        <div class="card-header bg-dark text-white"></div>
+	        <div class="card-header bg-dark text-white" th:text="${titulo}"></div>
 	   		<div class="card-body">
 	
-		<form>
+		<form th:object="${client}">
 		  <div class="form-group row">
 			 <label class="col-md-2" for="firstName">firstName</label> 
- 			 <input type="text" class="form-control form-control-sm col-md-6" id="firstName">
+ 			 <input type="text" th:field="*{firstName}" class="form-control form-control-sm col-md-6" id="firstName">
 		  </div>
 		  <div class="form-group row">
 			 <label class="col-md-2" for="lastName">lastName</label> 
- 			 <input type="text" class="form-control form-control-sm col-md-6" id="lastName">
+ 			 <input type="text" th:field="*{lastName}" class="form-control form-control-sm col-md-6" id="lastName">
 		  </div>
 		  <div class="form-group row">
 			 <label class="col-md-2" for="phone">Phone</label> 
- 			 <input type="text" class="form-control form-control-sm col-md-6" id="phone">
+ 			 <input type="text" th:field="*{phone}" class="form-control form-control-sm col-md-6" id="phone">
 		  </div>
 		  <div class="form-group row">
 			 <label class="col-md-2" for="email">Email</label> 
- 			 <input type="email" class="form-control form-control-sm col-md-6" id="email">
-		  </div>
-		  <div class="form-group row">
-			 <label class="col-md-2" for="firstName">firstName</label> 
- 			 <input type="text" class="form-control form-control-sm col-md-6" id="firstName">
+ 			 <input type="email" th:field="*{email}" class="form-control form-control-sm col-md-6" id="email">
 		  </div>
 		  <div class="form-group row">
 			 <label class="col-md-2" for="city">City</label> 
- 			 <select type="text" class="form-control form-control-sm col-md-6" id="city"></select>
+ 			 <select type="text" th:field="*{idCity}" class="form-control form-control-sm col-md-6" id="city">
+ 			 	<option th:each="ct : ${cities}"
+ 			 		    th:value="${ct.idCity}"
+ 			 		    th:text="${ct.city}"> 
+ 			    </option>
+ 			 </select>
 		  </div>	
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>

@@ -22,21 +22,40 @@ public class City implements Serializable{
 	private String City;
 	
 	
+	
+
+
 	public Long getIdCity() {
 		return IdCity;
 	}
 
+
+
+
+
 	public void setIdCity(Long idCity) {
 		IdCity = idCity;
 	}
-	
+
+
+
+
+
 	public String getCity() {
 		return City;
 	}
 
+
+
+
+
 	public void setCity(String city) {
 		City = city;
 	}
+
+
+
+
 
 	@Override
 	public String toString() {
