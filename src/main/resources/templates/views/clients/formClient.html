@@ -16,7 +16,7 @@
 	        <div class="card-header bg-dark text-white" th:text="${titulo}"></div>
 	   		<div class="card-body">
 	
-		<form th:object="${client}">
+		<form th:action="@{/views/clients/save}" th:object="${client}" method="post">
 		  <div class="form-group row">
 			 <label class="col-md-2" for="firstName">firstName</label> 
  			 <input type="text" th:field="*{firstName}" class="form-control form-control-sm col-md-6" id="firstName">
@@ -42,7 +42,7 @@
  			    </option>
  			 </select>
 		  </div>	
-			<button type="submit" class="btn btn-primary">Submit</button>
+			<button type="submit" class="btn btn-primary">Save</button>
 		</form>
 		</div>
 	   </div>

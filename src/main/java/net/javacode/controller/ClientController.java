@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import net.javacode.entity.City;
@@ -38,5 +40,10 @@ public class ClientController {
 		model.addAttribute("cities", listCities);
 		return "/views/clients/formClient";
 	}
-
+    @PostMapping("/save")
+	public String save(@ModelAttribute Client client) {
+    	iClientService.save(client);
+    	System.out.println("Save User");
+		return "redirect:/views/clients/";
+	}
 }
