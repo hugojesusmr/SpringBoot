@@ -18,6 +18,7 @@
 	
 		<form th:action="@{/views/clients/save}" th:object="${client}" method="post">
 		  <div class="form-group row">
+  		     <input type="hidden" th:field="*{idClient}">
 			 <label class="col-md-2" for="firstName">firstName</label> 
  			 <input type="text" th:field="*{firstName}" class="form-control form-control-sm col-md-6" id="firstName">
 		  </div>

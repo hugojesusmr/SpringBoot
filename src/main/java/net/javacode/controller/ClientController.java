@@ -2,11 +2,14 @@ package net.javacode.controller;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -46,4 +49,21 @@ public class ClientController {
     	System.out.println("Save User");
 		return "redirect:/views/clients/";
 	}
+    
+    @GetMapping("/edit/{idClient}")
+    public String edit(@PathVariable Long idClient, Model model) {
+    	Client client = iClientService.findById(idClient);
+    	List<City> listCities = iCityService.listCities();
+    	
+    	model.addAttribute("titulo","Edit Client");
+    	model.addAttribute("client", client);
+    	model.addAttribute("cities", listCities);
+		return "/views/clients/formClient";
+    }
+    
+    @GetMapping("/delete/{idClient}")
+    public String delete(@PathVariable Long idClient) {
+    	iClientService.delete(idClient);
+    	return "redirect:/views/clients/";
+    }
 }
