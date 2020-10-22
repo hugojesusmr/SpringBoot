@@ -1,16 +1,11 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head th:replace="template/template :: head">
-<meta name="viewport"
-	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<div th:replace="components/style"></div>
-<title>HOME</title>
+<html xmlns="http://www.w3.org/1999/xhtml"  xmlns:th="http://www.thymeleaf.org" >
+	
+	 <!-- TEMPLATE STYLE -->
+	<div th:replace="template/style"></div>
 
-</head>
 <body>
-	<header th:replace="template/template :: header"></header>
+    <!-- TEMPLATE NAV -->
+	<div th:replace="template/nav"></div>
 	<div class="container">
 		<h1 th:text="${titulo}"></h1>
 	</div>
@@ -31,21 +26,19 @@
 			</thead>
 			<tbody>
 				<tr th:each="client : ${clients}">
-					<th scope="row" th:text="${client.idClient}"></th>
-					<th scope="row" th:text="${client.firstName}"></th>
-					<th scope="row" th:text="${client.lastName}"></th>
+					<th scope="row" th:text="${client.idclient}"></th>
+					<th scope="row" th:text="${client.firstname}"></th>
+					<th scope="row" th:text="${client.lastname}"></th>
 					<th scope="row" th:text="${client.phone}"></th>
 					<th scope="row" th:text="${client.email}"></th>
-					<th scope="row" th:text="${client.idCity.city}"></th>
-					<th><a class="btn btn-success btn-sm" th:href="@{/views/clients/edit/}+ ${client.idClient}" th:text="'Edit'" ></a> </th>
-					<th><a class="btn btn-danger btn-sm" th:href="@{/views/clients/delete/} +${client.idClient}" th:text="'Delete'"></a> </th>
+					<th scope="row" th:text="${client.idcity.city}"></th>
+					<th><a class="btn btn-success btn-sm" th:href="@{/views/clients/edit/}+ ${client.idclient}" th:text="'Edit'" ></a> </th>
+					<th><a class="btn btn-danger btn-sm" th:href="@{/views/clients/delete/} +${client.idclient}" th:text="'Delete'"></a> </th>
 				</tr>
 			</tbody>
 		</table>
-
 	</div>
-
-	<footer th:replace="template/template :: footer"></footer>
+	<!-- TEMPLATE SCRIPT -->
+	<div th:replace="template/script"></div>
 </body>
-
 </html>

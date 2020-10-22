@@ -1,20 +1,15 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head th:replace="template/template :: head">
-<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<div th:replace="components/style"></div>
-<title>HOME</title>
-
-</head>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org"  >
+	 <!-- TEMPLATE STYLE -->
+	<div th:replace="template/style"></div>
 <body>
-    <header th:replace="template/template :: header"></header>
+  <!-- TEMPLATE NAV -->
+   <div th:replace="template/nav"> </div>
     <div class="container">
     	<h1>HOLA DESDE SPRING </h1>
     </div>
-    
-	<footer th:replace="template/template :: footer"></footer>
+    <!-- TEMPLATE SCRIPT -->
+	<div th:replace="template/script"></div>
 </body>
 
 </html>

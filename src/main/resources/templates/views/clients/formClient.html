@@ -1,55 +1,59 @@
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
-	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-<head th:replace="template/template :: head">
-<meta name="viewport"
-	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-<div th:replace="components/style"></div>
-<title>HOME</title>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 
-</head>
+ <!-- TEMPLATE STYLE -->
+	<div th:replace="template/style"></div>
 <body>
-	<header th:replace="template/template :: header"></header>
+ <!-- TEMPLATE NAV -->
+   <div th:replace="template/nav"> </div>
 	<div class="container">
-	   <div class="card bg-light">
-	        <div class="card-header bg-dark text-white" th:text="${titulo}"></div>
-	   		<div class="card-body">
 	
-		<form th:action="@{/views/clients/save}" th:object="${client}" method="post">
-		  <div class="form-group row">
-  		     <input type="hidden" th:field="*{idClient}">
-			 <label class="col-md-2" for="firstName">firstName</label> 
- 			 <input type="text" th:field="*{firstName}" class="form-control form-control-sm col-md-6" id="firstName">
-		  </div>
-		  <div class="form-group row">
-			 <label class="col-md-2" for="lastName">lastName</label> 
- 			 <input type="text" th:field="*{lastName}" class="form-control form-control-sm col-md-6" id="lastName">
-		  </div>
-		  <div class="form-group row">
-			 <label class="col-md-2" for="phone">Phone</label> 
- 			 <input type="text" th:field="*{phone}" class="form-control form-control-sm col-md-6" id="phone">
-		  </div>
-		  <div class="form-group row">
-			 <label class="col-md-2" for="email">Email</label> 
- 			 <input type="email" th:field="*{email}" class="form-control form-control-sm col-md-6" id="email">
-		  </div>
-		  <div class="form-group row">
-			 <label class="col-md-2" for="city">City</label> 
- 			 <select type="text" th:field="*{idCity}" class="form-control form-control-sm col-md-6" id="city">
- 			 	<option th:each="ct : ${cities}"
- 			 		    th:value="${ct.idCity}"
- 			 		    th:text="${ct.city}"> 
- 			    </option>
- 			 </select>
-		  </div>	
-			<button type="submit" class="btn btn-primary">Save</button>
-		</form>
+		<div class="card bg-light">
+			<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+			<div class="card-body">
+				<form  th:action="@{/views/clients/save}" th:object="${client}"	method="post">
+					<div class="form_group row">
+						<input type="hidden" th:field="*{idclient}"/>
+						<label class="col-md-2">First Name:</label>
+						<input type="text" th:field="*{firstname}" class="form-control form-control-sm col-md-6"/>
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" ></small>
+					</div>
+					<div class="form_group row">
+						<label class="col-md-2">Last Name:</label>
+						<input type="text" th:field="*{lastname}" class="form-control form-control-sm col-md-6"/>
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" ></small>
+					</div>
+					<div class="form_group row">
+						<label class="col-md-2">Email:</label>
+						<input type="text" th:field="*{email}" class="form-control form-control-sm col-md-6"/>
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" ></small>
+					</div>
+					<div class="form_group row">
+						<label class="col-md-2">Phone:</label>
+						<input type="text" th:field="*{phone}" class="form-control form-control-sm col-md-6"/>
+						<small class="form-text text-danger" th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" ></small>
+					</div>
+					<div class="form_group row">
+						<label class="col-md-2">City:</label>
+						<select th:field="*{idcity}" class="form-control form-control-sm col-md-6">
+							<option th:each="city : ${cities}"
+								th:value="${city.idCity}"
+								th:text="${city.city}"
+							/> 
+						 </select> 
+						
+					</div>
+					
+					<div class="card-footer bg-dark">
+					   <input type="submit" class="btn btn-primary btn-sm" value="Guardar">
+				   </div>
+			   </form>
+			</div>
+			
 		</div>
-	   </div>
+		<!-- END PAGE CONTAINER -->
 	</div>
-
-	<footer th:replace="template/template :: footer"></footer>
+	<!-- TEMPLATE SCRIPT -->
+	<div th:replace="template/script"></div>
 </body>
-
 </html>
